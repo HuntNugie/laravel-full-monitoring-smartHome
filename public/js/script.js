@@ -2,6 +2,15 @@
 // untuk toggle
 const tombol = document.querySelectorAll(".tombol");
 
+async function handleDht() {
+    const response = await fetch("/api/dht22/all");
+    const data = await response.json();
+    document.querySelector("#temp").textContent = data.temperature
+    document.querySelector("#humd").textContent = data.temperature
+}
+
+setInterval(handleDht,2000);
+
 tombol.forEach((el) => {
     el.addEventListener("click", async(e) => {
         e.preventDefault();
